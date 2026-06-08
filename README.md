@@ -48,7 +48,11 @@ Training scripts and commands are included for completeness. Full training can b
 ├── README.md
 ├── DEVELOPMENT_HISTORY.md
 ├── EXPERIMENT_LOG.md
+├── data_access.md
+├── weights_or_links.txt
 ├── download_mvfoul_720p.py
+├── env/
+├── results/
 ├── scripts/
 │   ├── train/
 │   ├── eval/
@@ -97,7 +101,17 @@ decord==0.6.0
 numpy==2.2.6
 ```
 
-Before final submission, the exact environment files should be added under `env/`:
+Exact environment files are included under `env/`:
+
+```text
+env/mvfoul_full.yml
+env/mvfoul_from_history.yml
+env/pip_freeze.txt
+env/nvidia_smi_5090_cuda13.txt
+env/torch_cuda_check.txt
+```
+
+The files were generated with:
 
 ```bash
 mkdir -p env
@@ -110,6 +124,8 @@ nvidia-smi > env/nvidia_smi_5090_cuda13.txt
 ## 5. Data Setup
 
 The dataset is not included in this repository because SoccerNet-MVFoul is a large licensed dataset.
+
+See `data_access.md` for dataset access notes and the expected local layout.
 
 Expected data root:
 
@@ -180,6 +196,8 @@ outputs/qlora_cosmos8b_view_expanded_reason_clean/best_checkpoint/
 ```
 
 If the adapter is too large for GitHub, do not commit it. Put the download link in `weights_or_links.txt` and include that file in the LMS zip.
+
+Current status: the final clean QLoRA training run is still in progress. `weights_or_links.txt` is included as a placeholder and must be replaced with either the final adapter location or a public adapter download link before final LMS submission.
 
 ## 7. Zero-shot Evaluation
 
@@ -336,11 +354,21 @@ Checkpoint behavior:
 
 Completed historical results are summarized in `EXPERIMENT_LOG.md`.
 
-Current zero-shot late-fusion full-valid evaluation was still running at the time of this README draft. A partial result at 90 Valid actions was:
+The zero-shot late-fusion full-valid evaluation is complete. Result artifacts are included under:
+
+```text
+results/zero_shot_late_fusion_reason_full_valid/
+```
+
+Valid zero-shot results:
 
 | Setting | Samples | Accuracy | Balanced Accuracy | View Parse Errors |
 |---|---:|---:|---:|---:|
-| Zero-shot late fusion, `main_first` | 90 | 18.89 | 14.89 | 18 / 207 views |
+| Zero-shot late fusion, `main_first` | 321 | 19.63 | 16.59 | 70 / 763 views |
+| Zero-shot late fusion, `clip1_first` | 321 | 16.20 | 13.61 | 70 / 763 views |
+| Zero-shot late fusion, `majority_vote` | 321 | 19.63 | 16.69 | 70 / 763 views |
+| Zero-shot late fusion, `majority_clip1_tiebreak` | 321 | 16.82 | 14.09 | 70 / 763 views |
+| Zero-shot late fusion, `conservative_card` | 321 | 22.12 | 18.61 | 70 / 763 views |
 
 Observed zero-shot issues:
 
@@ -382,17 +410,17 @@ The final project decisions, experiment execution, result interpretation, and pr
 
 Before creating the LMS zip, add or update the following items:
 
-- [ ] `env/mvfoul_full.yml`
-- [ ] `env/mvfoul_from_history.yml`
-- [ ] `env/pip_freeze.txt`
-- [ ] `env/nvidia_smi_5090_cuda13.txt`
-- [ ] `data_access.md` with SoccerNet-MVFoul download/access instructions
+- [x] `env/mvfoul_full.yml`
+- [x] `env/mvfoul_from_history.yml`
+- [x] `env/pip_freeze.txt`
+- [x] `env/nvidia_smi_5090_cuda13.txt`
+- [x] `data_access.md` with SoccerNet-MVFoul download/access instructions
 - [ ] `weights_or_links.txt` with a working adapter download link, or include `weights/best_checkpoint/`
-- [ ] Final zero-shot metrics copied to `results/`
+- [x] Final zero-shot metrics copied to `results/`
 - [ ] Final fine-tuned validation metrics copied to `results/`
 - [ ] Test metrics, if available
 - [ ] Presentation slides PDF
-- [ ] Final README result table updated
+- [ ] Final README result table updated with fine-tuned results
 
 Suggested final zip layout:
 

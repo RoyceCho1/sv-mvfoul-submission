@@ -1,0 +1,37 @@
+# Model Weights / Adapter Link
+
+Status as of the current submission-preparation stage:
+
+Training is still running, so the final fine-tuned LoRA adapter is not included yet.
+
+Expected final adapter path inside the final submission:
+
+```text
+weights/best_checkpoint/
+```
+
+Expected adapter files:
+
+```text
+adapter_config.json
+adapter_model.safetensors
+tokenizer.json
+tokenizer_config.json
+processor_config.json
+chat_template.jinja
+```
+
+Base model:
+
+```text
+nvidia/Cosmos-Reason2-8B
+```
+
+Evaluation will use:
+
+```bash
+--model-id nvidia/Cosmos-Reason2-8B
+--adapter-path weights/best_checkpoint
+```
+
+If the LoRA adapter is too large to include directly in the LMS zip, replace this placeholder with a publicly accessible download link before final submission. The TA must be able to download the adapter without requesting additional permission.

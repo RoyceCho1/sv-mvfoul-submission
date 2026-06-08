@@ -1,0 +1,1610 @@
+{
+  "Set": "valid",
+  "Actions": {
+    "0": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "1": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "3": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "6": {
+      "Action class": "Elbowing",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "7": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "8": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "9": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "10": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "11": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "12": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "13": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "16": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "17": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "18": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "20": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "21": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "23": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "24": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "25": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "26": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "27": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "28": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "29": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "31": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "32": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "33": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "35": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "36": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "37": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "38": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "39": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "40": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "41": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "43": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "44": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "45": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "46": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "47": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "48": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "49": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "50": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "53": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "56": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "58": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "59": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "62": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "63": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "65": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "66": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "67": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "68": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "69": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "70": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "71": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "72": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "74": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "75": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "76": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "77": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "78": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "79": {
+      "Action class": "Holding",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "80": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "82": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "83": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "84": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "85": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "87": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "88": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "89": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "90": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "91": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "93": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "95": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "97": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "100": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "101": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "102": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "103": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "104": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "105": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "106": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "107": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "108": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "109": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "110": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "111": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "112": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "113": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "114": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "116": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "118": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "119": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "120": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "121": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "122": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "124": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "127": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "128": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "129": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "131": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "132": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "133": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "134": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "135": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "138": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "140": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "142": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "144": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "145": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "146": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "147": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "149": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "150": {
+      "Action class": "Holding",
+      "Offence": "",
+      "Severity": ""
+    },
+    "151": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "152": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "153": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "154": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "155": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "156": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "157": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "158": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "159": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "160": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "161": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "163": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "165": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "166": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "167": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "168": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "169": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "170": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "171": {
+      "Action class": "High leg",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "173": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "174": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "175": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "177": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "178": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "179": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "183": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "184": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "185": {
+      "Action class": "High leg",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "187": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "190": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "192": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "193": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "194": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "195": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "198": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "199": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "200": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "204": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "205": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "206": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "207": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "208": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "209": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "211": {
+      "Action class": "High leg",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "212": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "213": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "214": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "216": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "218": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "219": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "220": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "221": {
+      "Action class": "Dive",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "223": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "224": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "225": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "227": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "228": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "229": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "230": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "231": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "232": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "233": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "236": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "238": {
+      "Action class": "Holding",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "239": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "240": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "241": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "242": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "244": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "245": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "246": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "247": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "248": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "249": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "250": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "251": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "252": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "253": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "254": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "255": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "256": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "257": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "258": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "259": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "260": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "262": {
+      "Action class": "Holding",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "263": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "264": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "265": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "266": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "267": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "268": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "270": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "272": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "273": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "274": {
+      "Action class": "Holding",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "275": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "276": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "278": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "279": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "282": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "283": {
+      "Action class": "Holding",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "284": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "286": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "287": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "288": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "289": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "290": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "291": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "292": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "293": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "294": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "295": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "297": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "298": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "299": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "300": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "301": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "302": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "303": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "304": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "305": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "307": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "308": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "310": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "312": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "313": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "314": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "315": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "316": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "317": {
+      "Action class": "Pushing",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "318": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "319": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "320": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "323": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "324": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "325": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "326": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "327": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "328": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "329": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "330": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "331": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "332": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "334": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "335": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "336": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "338": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "339": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "340": {
+      "Action class": "Holding",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "342": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "343": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "344": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "345": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "346": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "347": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "348": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "349": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "350": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "351": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "352": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "354": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "355": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "356": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "358": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "359": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "1.0"
+    },
+    "360": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "361": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "363": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "364": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "366": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "367": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "368": {
+      "Action class": "Challenge",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "369": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "370": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "371": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "372": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "373": {
+      "Action class": "High leg",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "374": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "375": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "376": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "377": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "378": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "379": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "381": {
+      "Action class": "Standing tackling",
+      "Offence": "",
+      "Severity": ""
+    },
+    "382": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "384": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "385": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "386": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "387": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "388": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "389": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "390": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "391": {
+      "Action class": "Pushing",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "392": {
+      "Action class": "Standing tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "393": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "394": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "395": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "396": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "398": {
+      "Action class": "Elbowing",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "399": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "400": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "5.0"
+    },
+    "402": {
+      "Action class": "High leg",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "404": {
+      "Action class": "Holding",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "405": {
+      "Action class": "Challenge",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "407": {
+      "Action class": "Standing tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    },
+    "408": {
+      "Action class": "Tackling",
+      "Offence": "No offence",
+      "Severity": ""
+    },
+    "409": {
+      "Action class": "Tackling",
+      "Offence": "Offence",
+      "Severity": "3.0"
+    }
+  }
+}
