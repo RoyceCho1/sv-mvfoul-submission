@@ -1,0 +1,53 @@
+# Dataset and downloaded assets
+data/
+
+# Experiment outputs, logs, checkpoints, and generated reports
+outputs/
+logs/
+runs/
+wandb/
+mlruns/
+checkpoints/
+
+# Model weights and large binary artifacts
+*.pt
+*.pth
+*.pth.tar
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.tar
+*.tar.gz
+*.zip
+
+# VARS generated artifacts
+VARS model/models/
+VARS model/pretrained/
+VARS model/predicitions_test.json
+VARS model/**/*.log
+
+# Python cache/build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+build/
+dist/
+*.egg-info/
+
+# Local environment and secrets
+.env
+.env.*
+*.env
+.venv/
+venv/
+
+# Editor/OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
