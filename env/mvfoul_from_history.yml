@@ -1,7 +1,0 @@
-name: mvfoul
-channels:
-  - defaults
-dependencies:
-  - python=3.10
-  - ffmpeg
-prefix: /home/student_1/miniconda3/envs/mvfoul

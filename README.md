@@ -48,10 +48,11 @@ Training scripts and commands are included for completeness. Full training can b
 ├── README.md
 ├── DEVELOPMENT_HISTORY.md
 ├── EXPERIMENT_LOG.md
+├── REPRODUCIBILITY_CHECK.md
 ├── data_access.md
 ├── weights_or_links.txt
 ├── download_mvfoul_720p.py
-├── env/
+├── requirements.txt
 ├── results/
 ├── scripts/
 │   ├── train/
@@ -101,31 +102,13 @@ decord==0.6.0
 numpy==2.2.6
 ```
 
-Exact environment files are included under `env/`:
-
-```text
-env/mvfoul_full.yml
-env/mvfoul_from_history.yml
-env/pip_freeze.txt
-env/nvidia_smi_5090_cuda13.txt
-env/torch_cuda_check.txt
-```
-
-The files were generated with:
-
-```bash
-mkdir -p env
-conda env export -n mvfoul > env/mvfoul_full.yml
-conda env export -n mvfoul --from-history > env/mvfoul_from_history.yml
-conda run -n mvfoul pip freeze > env/pip_freeze.txt
-nvidia-smi > env/nvidia_smi_5090_cuda13.txt
-```
+Install Python packages from `requirements.txt`. It includes the PyTorch CUDA 13 wheel index and pinned Python package versions.
 
 ## 5. Data Setup
 
 The dataset is not included in this repository because SoccerNet-MVFoul is a large licensed dataset.
 
-See `data_access.md` for dataset access notes and the expected local layout.
+See `data_access.md` for dataset access notes and the expected local layout. See `REPRODUCIBILITY_CHECK.md` for a step-by-step reproducibility validation checklist.
 
 Expected data root:
 
@@ -410,10 +393,7 @@ The final project decisions, experiment execution, result interpretation, and pr
 
 Before creating the LMS zip, add or update the following items:
 
-- [x] `env/mvfoul_full.yml`
-- [x] `env/mvfoul_from_history.yml`
-- [x] `env/pip_freeze.txt`
-- [x] `env/nvidia_smi_5090_cuda13.txt`
+- [x] `requirements.txt`
 - [x] `data_access.md` with SoccerNet-MVFoul download/access instructions
 - [ ] `weights_or_links.txt` with a working adapter download link, or include `weights/best_checkpoint/`
 - [x] Final zero-shot metrics copied to `results/`
@@ -429,9 +409,10 @@ sn-mvfoul-submission/
   README.md
   EXPERIMENT_LOG.md
   DEVELOPMENT_HISTORY.md
+  REPRODUCIBILITY_CHECK.md
   data_access.md
   weights_or_links.txt
-  env/
+  requirements.txt
   results/
   scripts/
   slides.pdf

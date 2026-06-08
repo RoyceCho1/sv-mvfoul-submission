@@ -1,3 +1,7 @@
+# Install-friendly requirements for the reproduction environment.
+# PyTorch CUDA 13 wheels are hosted on the PyTorch wheel index, not default PyPI.
+--extra-index-url https://download.pytorch.org/whl/cu130
+
 accelerate==1.13.0
 aiohappyeyeballs==2.6.2
 aiohttp==3.14.0

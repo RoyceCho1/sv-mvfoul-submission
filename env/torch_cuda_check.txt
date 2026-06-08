@@ -1,2 +1,0 @@
-2.11.0+cu130 13.0
-NVIDIA GeForce RTX 5090 (12, 0)
