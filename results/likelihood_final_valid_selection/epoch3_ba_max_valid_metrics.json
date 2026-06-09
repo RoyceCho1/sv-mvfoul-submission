@@ -1,0 +1,47 @@
+{
+  "num_samples": 321,
+  "accuracy_offence_severity": 50.15576323987539,
+  "balanced_accuracy_offence_severity_seen_classes": 33.808379120879124,
+  "offence_severity_support": {
+    "Offence + Yellow card": 104,
+    "Offence + No card": 182,
+    "No offence": 32,
+    "Offence + Red card": 3
+  },
+  "view_level": {
+    "total_views": 763,
+    "view_parse_errors": 0
+  },
+  "prediction_distribution": {
+    "Offence + Yellow card": 117,
+    "Offence + No card": 152,
+    "No offence": 52
+  },
+  "confusion": {
+    "No offence": {
+      "Offence + No card": 13,
+      "Offence + Yellow card": 9,
+      "No offence": 10
+    },
+    "Offence + No card": {
+      "Offence + No card": 100,
+      "No offence": 27,
+      "Offence + Yellow card": 55
+    },
+    "Offence + Yellow card": {
+      "Offence + Yellow card": 51,
+      "Offence + No card": 38,
+      "No offence": 15
+    },
+    "Offence + Red card": {
+      "Offence + Yellow card": 2,
+      "Offence + No card": 1
+    }
+  },
+  "selection": {
+    "source": "outputs/likelihood_view_expanded_likelihood_epoch3",
+    "fusion_method": "weighted_clip1",
+    "prior_alpha": 0.05
+  },
+  "accuracy_ba_average": 41.98207118037726
+}

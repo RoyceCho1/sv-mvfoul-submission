@@ -1,29 +1,69 @@
 # SoccerNet-MVFoul Severity Classification with Cosmos-Reason2 QLoRA
 
-This repository contains the code and experiment documentation for a final project on SoccerNet-MVFoul foul severity classification. The goal is to solve the SoccerNet-MVFoul offence severity task with a reasoning vision-language model instead of the original VARS MViT-based video classifier.
+This repository contains the code, final LoRA adapter, evaluation artifacts, and reproducibility instructions for our SoccerNet-MVFoul offence severity classification project.
 
-## 1. Project Summary
+The final system uses `nvidia/Cosmos-Reason2-8B` with QLoRA and evaluates each video incident by fixed-label likelihood scoring instead of free-form text generation.
 
-We fine-tune `nvidia/Cosmos-Reason2-8B`, a reasoning VLM based on `Qwen3VLForConditionalGeneration`, with QLoRA for football foul severity classification.
+## 1. Task
 
-Current task:
+Target task:
 
 | Target | Classes |
 |---|---|
 | `offence_severity` | `No offence`, `Offence + No card`, `Offence + Yellow card`, `Offence + Red card` |
 
-The original two-task setup also included `action_class` 8-way classification. During development, the project was narrowed to the severity task because it is the main VAR-style decision target and the action-class task caused strong mode collapse under the available data and compute budget.
-
-Evaluation metrics:
+Metrics:
 
 - Accuracy
 - Balanced accuracy over seen classes
 
-Main baseline for comparison:
+Baseline reference:
 
-- VARS / SoccerNet-MVFoul benchmark, Task2 balanced accuracy around 43.0%.
+- VARS / SoccerNet-MVFoul benchmark, Task2 balanced accuracy approximately 43.0%.
 
-## 2. Reproducibility Scope
+We originally explored both `action_class` and `offence_severity`, but the final submitted system focuses on `offence_severity` because it is the main VAR-style decision target and was more stable under the available data and compute budget.
+
+## 2. Final Method
+
+Early experiments used free-form reasoning generation. The model generated `<think>` and `<answer>` text, then the predicted JSON was parsed. This caused avoidable evaluation noise:
+
+- Missing or malformed answer tags
+- Incomplete JSON
+- CJK/output drift
+- Long repetitive outputs
+- Sensitivity to `max_new_tokens`
+
+The final method treats Cosmos-Reason2 as a fixed-label likelihood scorer. For each video view, the evaluator scores the four allowed candidate answers:
+
+```json
+{"offence_severity": "No offence"}
+{"offence_severity": "Offence + No card"}
+{"offence_severity": "Offence + Yellow card"}
+{"offence_severity": "Offence + Red card"}
+```
+
+For each candidate answer, the score is the average token log likelihood:
+
+```text
+score(label) = -NLL(candidate_answer) / token_count(candidate_answer)
+```
+
+The highest scoring label is selected. Multi-view action-level prediction is produced with score-level fusion. The final main setting uses:
+
+```text
+fusion_method = clip1
+prior_alpha = 0.005
+```
+
+A small class-prior correction is applied as:
+
+```text
+adjusted_score(label) = score(label) - alpha * log(train_prior(label))
+```
+
+This removes parsing failures because the model no longer generates open-ended answer text during classification.
+
+## 3. Reproducibility Scope
 
 Full training reproduction is resource-intensive because it requires:
 
@@ -33,49 +73,50 @@ Full training reproduction is resource-intensive because it requires:
 - CUDA 13 / Blackwell-compatible PyTorch and bitsandbytes
 - Several hours of QLoRA training and validation
 
-Therefore, the primary reproducibility target for the final submission is:
+The intended reproducibility target for this submission is:
 
-1. Run zero-shot late-fusion evaluation from the base model.
-2. Run fine-tuned late-fusion evaluation from the submitted LoRA adapter.
-3. Reproduce the reported validation/test metrics from saved adapter weights and evaluation scripts.
+1. Rebuild the Python environment from `requirements.txt`.
+2. Place SoccerNet-MVFoul under the documented local data layout.
+3. Run the provided final LoRA adapter with likelihood-scoring evaluation.
+4. Reproduce the reported Valid/Test metrics from the included code, adapter, and evaluation data.
 
-Training scripts and commands are included for completeness. Full training can be rerun on a compatible GPU, but exact bit-level reproducibility is not guaranteed due to video decoding, CUDA kernels, and autoregressive generation.
+Training scripts are included for completeness. Exact bit-level training reproduction is not guaranteed because video decoding, CUDA kernels, and large-model training can vary across machines.
 
-## 3. Repository Contents
+## 4. Repository Layout
+
+Recommended final package layout for this project component:
 
 ```text
-.
-├── README.md
-├── DEVELOPMENT_HISTORY.md
-├── EXPERIMENT_LOG.md
-├── REPRODUCIBILITY_CHECK.md
-├── data_access.md
-├── weights_or_links.txt
-├── download_mvfoul_720p.py
-├── requirements.txt
-├── results/
-├── scripts/
-│   ├── train/
-│   ├── eval/
-│   ├── zero_shot/
-│   └── sh/
-└── .gitignore
+sn-mvfoul-submission/
+  README.md
+  requirements.txt
+  weights_or_links.txt
+  download_mvfoul_720p.py
+  scripts/
+  results/
+  weights/
 ```
 
-Important scripts:
+Main paths:
 
-| File | Purpose |
+| Path | Purpose |
 |---|---|
-| `scripts/train/train_view_expanded_reason.py` | View-expanded single-view QLoRA training |
-| `scripts/eval/eval_late_fusion_reason.py` | Per-view inference and action-level late fusion |
-| `scripts/eval/refuse_late_fusion_rows.py` | Offline re-fusion using saved per-view rows |
-| `scripts/train/frame_utils.py` | Foul-anchored frame sampling utilities |
-| `scripts/sh/run_view_expanded_reason.sh` | Wrapper for view-expanded experiments |
-| `scripts/zero_shot/zero_shot_eval.py` | Shared label/parser/metric utilities |
+| `README.md` | Main submission and reproduction guide |
+| `requirements.txt` | Python package specification |
+| `weights_or_links.txt` | Adapter location and large-weight note |
+| `download_mvfoul_720p.py` | Helper script for SoccerNet-MVFoul download setup |
+| `scripts/eval/eval_late_fusion_likelihood.py` | Final likelihood-scoring evaluation |
+| `scripts/train/train_view_expanded_likelihood.py` | Likelihood-aligned QLoRA training |
+| `scripts/eval/eval_late_fusion_reason.py` | Historical free-generation evaluation |
+| `scripts/eval/refuse_late_fusion_rows.py` | Offline re-fusion for saved generation rows |
+| `results/` | Included Valid/Test result artifacts |
+| `weights/final_likelihood_epoch3/` | Final LoRA adapter |
 
-## 4. Environment
+Internal development notes are not required for reproduction and can be excluded from the final integrated team repository.
 
-The experiments were run with the following hardware and software stack:
+## 5. Environment
+
+Experiments were run with:
 
 ```text
 GPU: 2 x NVIDIA GeForce RTX 5090, 32607 MiB each
@@ -102,36 +143,95 @@ decord==0.6.0
 numpy==2.2.6
 ```
 
-Install Python packages from `requirements.txt`. It includes the PyTorch CUDA 13 wheel index and pinned Python package versions.
+Create a fresh conda environment:
 
-## 5. Data Setup
+```bash
+cd /path/to/sn-mvfoul-submission
+eval "$(conda shell.bash hook)"
+conda create -n mvfoul python=3.10 ffmpeg pip -c conda-forge -y
+conda activate mvfoul
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
 
-The dataset is not included in this repository because SoccerNet-MVFoul is a large licensed dataset.
+Check CUDA/PyTorch availability:
 
-See `data_access.md` for dataset access notes and the expected local layout. See `REPRODUCIBILITY_CHECK.md` for a step-by-step reproducibility validation checklist.
+```bash
+python - <<'PY'
+import torch
+import transformers
+import accelerate
+import peft
+import bitsandbytes as bnb
 
-Expected data root:
+print('torch:', torch.__version__)
+print('torch cuda:', torch.version.cuda)
+print('cuda available:', torch.cuda.is_available())
+print('gpu count:', torch.cuda.device_count())
+if torch.cuda.is_available():
+    print('gpu 0:', torch.cuda.get_device_name(0))
+print('transformers:', transformers.__version__)
+print('accelerate:', accelerate.__version__)
+print('peft:', peft.__version__)
+print('bitsandbytes:', getattr(bnb, '__version__', 'unknown'))
+PY
+```
+
+Expected on a compatible GPU server:
+
+```text
+cuda available: True
+torch cuda: 13.0
+bitsandbytes import succeeds
+```
+
+## 6. Data Setup
+
+This project uses the SoccerNet-MVFoul video dataset. The dataset is not included in this repository because it is large and distributed under SoccerNet's data access terms.
+
+Expected local path:
 
 ```text
 data/SoccerNet/mvfouls/
 ```
 
-Expected structure:
+Expected directory layout:
 
 ```text
 data/SoccerNet/mvfouls/
   Train/
     annotations.json
-    action_{id}/clip_{idx}.mp4
+    action_{id}/
+      clip_0.mp4
+      clip_1.mp4
+      ...
   Valid/
     annotations.json
-    action_{id}/clip_{idx}.mp4
+    action_{id}/
+      clip_0.mp4
+      clip_1.mp4
+      ...
   Test/
     annotations.json
-    action_{id}/clip_{idx}.mp4
+    action_{id}/
+      clip_0.mp4
+      clip_1.mp4
+      ...
 ```
 
-The code uses the official-target filter:
+The scripts assume this path by default:
+
+```bash
+--data-root data/SoccerNet/mvfouls
+```
+
+If local videos are missing, use the official SoccerNet access instructions for SoccerNet-MVFoul. The included helper script can be used as a starting point after SoccerNet authentication/token setup:
+
+```bash
+python download_mvfoul_720p.py
+```
+
+Official-target filtering used for the submitted experiments:
 
 ```text
 action_class != "Dont know"
@@ -147,7 +247,7 @@ Expected filtered counts:
 | Valid | 321 actions |
 | Test | 247 actions |
 
-## 6. Model Weights
+## 7. Model Weights
 
 Base model:
 
@@ -155,15 +255,10 @@ Base model:
 nvidia/Cosmos-Reason2-8B
 ```
 
-The final submission should include either:
-
-1. The fine-tuned LoRA adapter directory, or
-2. A publicly accessible download link to the adapter.
-
-Expected adapter directory format:
+Final submitted LoRA adapter:
 
 ```text
-weights/best_checkpoint/
+weights/final_likelihood_epoch3/
   adapter_config.json
   adapter_model.safetensors
   tokenizer.json
@@ -172,206 +267,244 @@ weights/best_checkpoint/
   chat_template.jinja
 ```
 
-Current working output path during development:
+The adapter is not a full copy of the base model. `adapter_model.safetensors` is approximately 333 MiB. It is included in the local LMS zip package. If this project is submitted through GitHub instead of a zip, upload the adapter separately and provide a public download link in `weights_or_links.txt`.
+
+## 8. Final Results
+
+Final model setting:
 
 ```text
-outputs/qlora_cosmos8b_view_expanded_reason_clean/best_checkpoint/
+Base model: nvidia/Cosmos-Reason2-8B
+Adapter: weights/final_likelihood_epoch3
+Training: view-expanded QLoRA with short JSON likelihood-aligned targets
+Inference: fixed-label likelihood scoring
+Frames per view: 32
+Fusion: clip1
+Prior alpha: 0.005
 ```
 
-If the adapter is too large for GitHub, do not commit it. Put the download link in `weights_or_links.txt` and include that file in the LMS zip.
+Main Valid/Test result:
 
-Current status: the final clean QLoRA training run is still in progress. `weights_or_links.txt` is included as a placeholder and must be replaced with either the final adapter location or a public adapter download link before final LMS submission.
+| Split | Samples | Fusion | Prior alpha | Accuracy | Balanced Accuracy | Parse Errors |
+|---|---:|---|---:|---:|---:|---:|
+| Valid | 321 | `clip1` | 0.005 | 57.63 | 31.70 | 0 |
+| Test | 247 | `clip1` | 0.005 | 57.49 | 29.44 | 0 |
 
-## 7. Zero-shot Evaluation
+Additional Valid candidates:
 
-Zero-shot evaluation uses the base Cosmos-Reason2-8B model without any LoRA adapter. Each view is evaluated independently and then fused at the action level.
+| Candidate | Fusion | Prior alpha | Valid Accuracy | Valid Balanced Accuracy | Notes |
+|---|---|---:|---:|---:|---|
+| Main | `clip1` | 0.005 | 57.63 | 31.70 | Best Acc/BA tradeoff |
+| BA-focused | `weighted_clip1` | 0.05 | 50.16 | 33.81 | Highest usable balanced accuracy |
+| All-view | `score_mean` | 0.03 | 56.07 | 31.42 | Uses all views |
 
-Run full Valid zero-shot late-fusion evaluation:
+Comparison with earlier generation-based experiments:
 
-```bash
-CUDA_VISIBLE_DEVICES=0 python scripts/eval/eval_late_fusion_reason.py \
-  --model-id nvidia/Cosmos-Reason2-8B \
-  --split Valid \
-  --limit 0 \
-  --num-frames 32 \
-  --max-views 0 \
-  --max-new-tokens 256 \
-  --fusion-rule main_first \
-  --log-every 20 \
-  --save-every 10 \
-  --out-dir outputs/zero_shot_late_fusion_reason_full_valid \
-  --output-prefix valid_base_views
-```
+| Setting | Valid Accuracy | Valid Balanced Accuracy | Parse Errors |
+|---|---:|---:|---:|
+| Zero-shot generation, best listed fusion | 22.12 | 18.61 | 70 / 763 views |
+| Fine-tuned generation, `main_first` | 38.94 | 23.71 | Present |
+| Fine-tuned generation, `clip1_first` | 38.01 | 25.62 | Present |
+| Reason-clean adapter + likelihood scoring | 53.58 | 26.69 | 0 |
+| Likelihood-aligned epoch 3, main | 57.63 | 31.70 | 0 |
+| Likelihood-aligned epoch 3, BA-focused | 50.16 | 33.81 | 0 |
 
-Resume if interrupted:
-
-```bash
-CUDA_VISIBLE_DEVICES=0 python scripts/eval/eval_late_fusion_reason.py \
-  --model-id nvidia/Cosmos-Reason2-8B \
-  --split Valid \
-  --limit 0 \
-  --num-frames 32 \
-  --max-views 0 \
-  --max-new-tokens 256 \
-  --fusion-rule main_first \
-  --log-every 20 \
-  --save-every 10 \
-  --resume \
-  --out-dir outputs/zero_shot_late_fusion_reason_full_valid \
-  --output-prefix valid_base_views
-```
-
-Outputs:
+Included result artifacts:
 
 ```text
-outputs/zero_shot_late_fusion_reason_full_valid/
-  valid_base_views_rows.jsonl
-  valid_base_views_rows.json
-  valid_base_views_predictions.json
-  valid_base_views_metrics.json
+results/likelihood_final_valid_selection/
+results/likelihood_epoch3_valid/
+results/likelihood_final_test_main/
+results/zero_shot_late_fusion_reason_full_valid/
 ```
 
-## 8. Fine-tuned Evaluation
+Main Test result files:
 
-After the LoRA adapter is available, run fine-tuned late-fusion evaluation:
+```text
+results/likelihood_final_test_main/
+  test_likelihood_best_metrics.json
+  test_likelihood_best_predictions.json
+  test_likelihood_best_rows.json
+  test_likelihood_metrics_grid.json
+  test_likelihood_score_rows.json
+  test_likelihood_score_rows.jsonl
+```
+
+## 9. Reproduce Final Evaluation
+
+Run syntax and CLI checks:
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python scripts/eval/eval_late_fusion_reason.py \
+python -m compileall scripts
+python scripts/eval/eval_late_fusion_likelihood.py --help
+python scripts/train/train_view_expanded_likelihood.py --help
+```
+
+Check adapter files:
+
+```bash
+ls weights/final_likelihood_epoch3/adapter_config.json
+ls weights/final_likelihood_epoch3/adapter_model.safetensors
+ls weights/final_likelihood_epoch3/tokenizer_config.json
+ls weights/final_likelihood_epoch3/processor_config.json
+```
+
+Run a small Valid smoke evaluation:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python scripts/eval/eval_late_fusion_likelihood.py \
   --model-id nvidia/Cosmos-Reason2-8B \
-  --adapter-path weights/best_checkpoint \
+  --adapter-path weights/final_likelihood_epoch3 \
+  --data-root data/SoccerNet/mvfouls \
+  --split Valid \
+  --limit 2 \
+  --num-frames 32 \
+  --max-views 2 \
+  --candidate-format json \
+  --score-reduction mean \
+  --fusion-methods clip1 \
+  --prior-alphas 0.005 \
+  --out-dir /tmp/mvfoul_likelihood_smoke \
+  --output-prefix valid2_likelihood_smoke
+```
+
+Expected smoke outputs:
+
+```text
+/tmp/mvfoul_likelihood_smoke/valid2_likelihood_smoke_score_rows.json
+/tmp/mvfoul_likelihood_smoke/valid2_likelihood_smoke_metrics_grid.json
+/tmp/mvfoul_likelihood_smoke/valid2_likelihood_smoke_best_metrics.json
+/tmp/mvfoul_likelihood_smoke/valid2_likelihood_smoke_best_predictions.json
+```
+
+Run the final Valid evaluation:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python scripts/eval/eval_late_fusion_likelihood.py \
+  --model-id nvidia/Cosmos-Reason2-8B \
+  --adapter-path weights/final_likelihood_epoch3 \
+  --data-root data/SoccerNet/mvfouls \
   --split Valid \
   --limit 0 \
   --num-frames 32 \
   --max-views 0 \
-  --max-new-tokens 256 \
-  --fusion-rule main_first \
+  --candidate-format json \
+  --score-reduction mean \
+  --fusion-methods clip1 \
+  --prior-alphas 0.005 \
+  --out-dir outputs/likelihood_final_valid_main \
+  --output-prefix valid_likelihood \
   --log-every 20 \
-  --save-every 10 \
-  --out-dir outputs/late_fusion_view_expanded_reason \
-  --output-prefix valid_base_views
+  --save-every 10
 ```
 
-If using the development output path directly:
+Expected Valid metrics:
+
+```text
+accuracy_offence_severity: 57.63239875389408
+balanced_accuracy_offence_severity_seen_classes: 31.69642857142857
+```
+
+Run the final Test evaluation:
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python scripts/eval/eval_late_fusion_reason.py \
+CUDA_VISIBLE_DEVICES=0 python scripts/eval/eval_late_fusion_likelihood.py \
   --model-id nvidia/Cosmos-Reason2-8B \
-  --adapter-path outputs/qlora_cosmos8b_view_expanded_reason_clean/best_checkpoint \
-  --split Valid \
+  --adapter-path weights/final_likelihood_epoch3 \
+  --data-root data/SoccerNet/mvfouls \
+  --split Test \
   --limit 0 \
   --num-frames 32 \
   --max-views 0 \
-  --max-new-tokens 256 \
-  --fusion-rule main_first \
+  --candidate-format json \
+  --score-reduction mean \
+  --fusion-methods clip1 \
+  --prior-alphas 0.005 \
+  --out-dir outputs/likelihood_final_test_main \
+  --output-prefix test_likelihood \
   --log-every 20 \
-  --save-every 10 \
-  --out-dir outputs/late_fusion_view_expanded_reason \
-  --output-prefix valid_base_views
+  --save-every 10
 ```
 
-## 9. Offline Fusion Evaluation
+Expected Test metrics:
 
-After `valid_base_views_rows.json` is produced, evaluate several fusion rules without rerunning the model:
-
-```bash
-for RULE in main_first clip1_first majority_vote majority_clip1_tiebreak conservative_card; do
-  python scripts/eval/refuse_late_fusion_rows.py \
-    --rows outputs/late_fusion_view_expanded_reason/valid_base_views_rows.json \
-    --fusion-rule "$RULE" \
-    --annotations data/SoccerNet/mvfouls/Valid/annotations.json \
-    --out-dir outputs/late_fusion_view_expanded_reason \
-    --output-prefix "valid_refuse_${RULE}"
-done
+```text
+accuracy_offence_severity: 57.48987854251012
+balanced_accuracy_offence_severity_seen_classes: 29.44035582456382
 ```
 
-Summarize metrics:
+Compare a generated Valid run against the included reference metrics:
 
 ```bash
 python - <<'PY'
-import json
-from pathlib import Path
-
-root = Path("outputs/late_fusion_view_expanded_reason")
-for p in sorted(root.glob("valid_refuse_*_metrics.json")):
-    m = json.loads(p.read_text())
-    print(
-        p.name,
-        "acc=", m["accuracy_offence_severity"],
-        "ba=", m["balanced_accuracy_offence_severity_seen_classes"],
-        "view_parse_errors=", m["view_level"]["view_parse_errors"],
-    )
+import json, math
+new = json.load(open('outputs/likelihood_final_valid_main/valid_likelihood_metrics_grid.json'))
+ref = json.load(open('results/likelihood_final_valid_selection/epoch3_acc_ba_tradeoff_valid_metrics.json'))
+grid = new['grid'] if isinstance(new, dict) and 'grid' in new else new
+row = next(x for x in grid if x.get('fusion_method') == 'clip1' and abs(float(x.get('prior_alpha')) - 0.005) < 1e-12)
+metrics = row.get('metrics', row)
+for key in ['accuracy_offence_severity', 'balanced_accuracy_offence_severity_seen_classes']:
+    assert math.isclose(float(metrics[key]), float(ref[key]), rel_tol=0, abs_tol=1e-9), (key, metrics[key], ref[key])
+print('main likelihood Valid metrics match')
 PY
 ```
 
 ## 10. Optional Training Command
 
-Full training is optional for reproduction because it is expensive. The current clean training command is:
+Training is not the primary reproduction requirement. The final likelihood-aligned training command was:
 
 ```bash
-CUDA_VISIBLE_DEVICES=1 python scripts/train/train_view_expanded_reason.py \
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train_view_expanded_likelihood.py \
   --model-id nvidia/Cosmos-Reason2-8B \
   --data-root data/SoccerNet/mvfouls \
-  --output-dir outputs/qlora_cosmos8b_view_expanded_reason_clean \
+  --output-dir outputs/qlora_cosmos8b_view_expanded_likelihood \
   --device cuda:0 \
   --num-epochs 3 \
   --num-frames 32 \
   --grad-accum 8 \
   --lr 5e-5 \
-  --lora-r 128 \
-  --lora-alpha 256 \
-  --max-new-tokens 256 \
+  --lora-r 32 \
+  --lora-alpha 64 \
+  --target-format json \
+  --score-reduction mean \
+  --fusion-methods score_mean,score_sum,clip0,clip1,weighted_clip1 \
+  --prior-alphas 0,0.001,0.0025,0.005,0.01,0.02,0.03,0.05,0.075 \
   --max-train-views 0 \
   --max-eval-views 0 \
-  --fusion-rule main_first \
   --balanced-sampling \
+  --save-every-epoch \
+  --no-epoch-eval \
   --seed 42
 ```
 
-Checkpoint behavior:
+A smaller smoke run can be used to verify that the training pipeline starts:
 
-- Validation runs after each epoch.
-- `best_checkpoint/` is saved only after validation completes.
-- The saved checkpoint is a LoRA adapter for evaluation, not a full optimizer-state resume checkpoint.
-
-## 11. Current Known Results
-
-Completed historical results are summarized in `EXPERIMENT_LOG.md`.
-
-The zero-shot late-fusion full-valid evaluation is complete. Result artifacts are included under:
-
-```text
-results/zero_shot_late_fusion_reason_full_valid/
+```bash
+CUDA_VISIBLE_DEVICES=0 python scripts/train/train_view_expanded_likelihood.py \
+  --model-id nvidia/Cosmos-Reason2-8B \
+  --data-root data/SoccerNet/mvfouls \
+  --output-dir /tmp/mvfoul_train_smoke \
+  --device cuda:0 \
+  --num-frames 32 \
+  --lora-r 16 \
+  --lora-alpha 32 \
+  --train-limit 4 \
+  --valid-limit 2 \
+  --max-train-views 1 \
+  --max-eval-views 1 \
+  --balanced-sampling \
+  --smoke-test
 ```
 
-Valid zero-shot results:
-
-| Setting | Samples | Accuracy | Balanced Accuracy | View Parse Errors |
-|---|---:|---:|---:|---:|
-| Zero-shot late fusion, `main_first` | 321 | 19.63 | 16.59 | 70 / 763 views |
-| Zero-shot late fusion, `clip1_first` | 321 | 16.20 | 13.61 | 70 / 763 views |
-| Zero-shot late fusion, `majority_vote` | 321 | 19.63 | 16.69 | 70 / 763 views |
-| Zero-shot late fusion, `majority_clip1_tiebreak` | 321 | 16.82 | 14.09 | 70 / 763 views |
-| Zero-shot late fusion, `conservative_card` | 321 | 22.12 | 18.61 | 70 / 763 views |
-
-Observed zero-shot issues:
-
-- Missing or malformed `<answer>` tags
-- CJK drift in some raw outputs
-- Overly long reasoning outputs
-- Underprediction of `Offence + No card`
-- Overprediction of Yellow/Red severity
-
-The fine-tuned results should be added after the running clean training/evaluation finishes.
-
-## 12. Baselines and Existing Code
+## 11. Baselines and Existing Code
 
 Baseline source:
 
 - VARS / SoccerNet-MVFoul benchmark. The reported reference number used here is the VARS Task2 balanced accuracy, approximately 43.0%.
 
-The full VARS baseline code is not included in this submission. Only the source and reported benchmark numbers are cited for comparison.
+The full VARS baseline code is not included in this submission. Only the source and reported benchmark number are cited for comparison.
 
-## 13. AI / Coding Tools Used
+## 12. AI / Coding Tools Used
 
 AI and coding-agent tools were used for implementation support.
 
@@ -384,36 +517,23 @@ How they were used:
 - Data-structure inspection and experiment planning
 - Script generation and debugging
 - Parser and evaluation utility development
-- QLoRA training script organization
+- QLoRA training/evaluation script organization
 - Documentation and reproducibility checklist drafting
 
 The final project decisions, experiment execution, result interpretation, and presentation preparation were performed by the student/team.
 
-## 14. Final Submission Checklist
+## 13. Final Submission Notes
 
-Before creating the LMS zip, add or update the following items:
-
-- [x] `requirements.txt`
-- [x] `data_access.md` with SoccerNet-MVFoul download/access instructions
-- [ ] `weights_or_links.txt` with a working adapter download link, or include `weights/best_checkpoint/`
-- [x] Final zero-shot metrics copied to `results/`
-- [ ] Final fine-tuned validation metrics copied to `results/`
-- [ ] Test metrics, if available
-- [ ] Presentation slides PDF
-- [ ] Final README result table updated with fine-tuned results
-
-Suggested final zip layout:
+For integration into a larger team repository, this project component only needs one markdown document: this `README.md`. The following files/directories should be included for reproducibility:
 
 ```text
-sn-mvfoul-submission/
-  README.md
-  EXPERIMENT_LOG.md
-  DEVELOPMENT_HISTORY.md
-  REPRODUCIBILITY_CHECK.md
-  data_access.md
-  weights_or_links.txt
-  requirements.txt
-  results/
-  scripts/
-  slides.pdf
+README.md
+requirements.txt
+weights_or_links.txt
+download_mvfoul_720p.py
+scripts/
+results/
+weights/final_likelihood_epoch3/
 ```
+
+The dataset itself is not included. It must be downloaded separately through SoccerNet and placed under `data/SoccerNet/mvfouls/`.

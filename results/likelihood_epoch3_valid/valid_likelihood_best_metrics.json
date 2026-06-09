@@ -1,0 +1,60 @@
+{
+  "num_samples": 321,
+  "accuracy_offence_severity": 50.155763239875384,
+  "balanced_accuracy_offence_severity_seen_classes": 33.808379120879124,
+  "offence_severity_support": {
+    "No offence": 32,
+    "Offence + No card": 182,
+    "Offence + Yellow card": 104,
+    "Offence + Red card": 3
+  },
+  "view_level": {
+    "total_views": 763,
+    "view_parse_errors": 0,
+    "by_clip_idx": {
+      "0": {
+        "num_samples": 321,
+        "accuracy_offence_severity": 52.336448598130836,
+        "balanced_accuracy_offence_severity_seen_classes": 26.631181318681318,
+        "offence_severity_support": {
+          "No offence": 32,
+          "Offence + No card": 182,
+          "Offence + Yellow card": 104,
+          "Offence + Red card": 3
+        }
+      },
+      "1": {
+        "num_samples": 321,
+        "accuracy_offence_severity": 57.3208722741433,
+        "balanced_accuracy_offence_severity_seen_classes": 30.50309065934066,
+        "offence_severity_support": {
+          "No offence": 32,
+          "Offence + No card": 182,
+          "Offence + Yellow card": 104,
+          "Offence + Red card": 3
+        }
+      },
+      "2": {
+        "num_samples": 96,
+        "accuracy_offence_severity": 53.125,
+        "balanced_accuracy_offence_severity_seen_classes": 27.916666666666668,
+        "offence_severity_support": {
+          "No offence": 7,
+          "Offence + No card": 48,
+          "Offence + Yellow card": 40,
+          "Offence + Red card": 1
+        }
+      },
+      "3": {
+        "num_samples": 25,
+        "accuracy_offence_severity": 36.0,
+        "balanced_accuracy_offence_severity_seen_classes": 21.42857142857143,
+        "offence_severity_support": {
+          "No offence": 1,
+          "Offence + No card": 14,
+          "Offence + Yellow card": 10
+        }
+      }
+    }
+  }
+}

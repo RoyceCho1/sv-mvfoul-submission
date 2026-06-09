@@ -1,0 +1,29 @@
+[
+  {
+    "name": "epoch3_acc_ba_tradeoff",
+    "source": "outputs/likelihood_view_expanded_likelihood_epoch3",
+    "fusion_method": "clip1",
+    "prior_alpha": 0.005,
+    "accuracy": 57.63239875389408,
+    "balanced_accuracy": 31.69642857142857,
+    "acc_ba_average": 44.664413662661325
+  },
+  {
+    "name": "epoch3_score_mean_tradeoff",
+    "source": "outputs/likelihood_view_expanded_likelihood_epoch3",
+    "fusion_method": "score_mean",
+    "prior_alpha": 0.03,
+    "accuracy": 56.074766355140184,
+    "balanced_accuracy": 31.4217032967033,
+    "acc_ba_average": 43.74823482592174
+  },
+  {
+    "name": "epoch3_ba_max",
+    "source": "outputs/likelihood_view_expanded_likelihood_epoch3",
+    "fusion_method": "weighted_clip1",
+    "prior_alpha": 0.05,
+    "accuracy": 50.15576323987539,
+    "balanced_accuracy": 33.808379120879124,
+    "acc_ba_average": 41.98207118037726
+  }
+]

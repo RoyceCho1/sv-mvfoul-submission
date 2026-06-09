@@ -1,37 +1,31 @@
-# Model Weights / Adapter Link
-
-Status as of the current submission-preparation stage:
-
-Training is still running, so the final fine-tuned LoRA adapter is not included yet.
-
-Expected final adapter path inside the final submission:
-
-```text
-weights/best_checkpoint/
-```
-
-Expected adapter files:
-
-```text
-adapter_config.json
-adapter_model.safetensors
-tokenizer.json
-tokenizer_config.json
-processor_config.json
-chat_template.jinja
-```
+# Final model weights
 
 Base model:
+- nvidia/Cosmos-Reason2-8B
 
-```text
-nvidia/Cosmos-Reason2-8B
-```
+Final LoRA adapter used for the main likelihood-scoring result:
+- Local path in this submission directory: weights/final_likelihood_epoch3/
+- Expected files:
+  - adapter_config.json
+  - adapter_model.safetensors
+  - tokenizer.json
+  - tokenizer_config.json
+  - processor_config.json
+  - chat_template.jinja
 
-Evaluation will use:
+Important:
+- adapter_model.safetensors is approximately 333 MiB.
+- It is copied into the local submission folder for LMS zip packaging.
+- It may be ignored by Git due to large-file ignore rules. If this repository is submitted through GitHub instead of a zip, upload the adapter separately and replace this note with a public download link.
 
-```bash
---model-id nvidia/Cosmos-Reason2-8B
---adapter-path weights/best_checkpoint
-```
-
-If the LoRA adapter is too large to include directly in the LMS zip, replace this placeholder with a publicly accessible download link before final submission. The TA must be able to download the adapter without requesting additional permission.
+Final Valid setting:
+- Adapter: weights/final_likelihood_epoch3
+- Inference: label likelihood scoring
+- Main fusion: clip1
+- Main prior alpha: 0.005
+- Valid Acc: 57.63
+- Valid Balanced Acc: 31.70
+- BA-focused fusion: weighted_clip1
+- BA-focused prior alpha: 0.05
+- BA-focused Valid Acc: 50.16
+- BA-focused Valid Balanced Acc: 33.81
