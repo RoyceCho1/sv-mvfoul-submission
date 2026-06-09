@@ -225,11 +225,25 @@ The scripts assume this path by default:
 --data-root data/SoccerNet/mvfouls
 ```
 
-If local videos are missing, use the official SoccerNet access instructions for SoccerNet-MVFoul. The included helper script can be used as a starting point after SoccerNet authentication/token setup:
+Download procedure:
+
+1. Create or use a SoccerNet account with access to SoccerNet-MVFoul.
+2. Make sure the project environment is active and dependencies are installed from `requirements.txt`.
+3. Run the included helper script:
 
 ```bash
 python download_mvfoul_720p.py
 ```
+
+The script uses `SoccerNet.Downloader.SoccerNetDownloader`, asks for the SoccerNet password interactively, and downloads the 720p MVFoul data under `data/SoccerNet/`.
+
+If the dataset already exists elsewhere, copy or symlink it so that the final path is:
+
+```text
+data/SoccerNet/mvfouls/
+```
+
+Depending on SoccerNet account permissions and token/password setup, the reviewer may need to authenticate through the official SoccerNet instructions before the download succeeds.
 
 Official-target filtering used for the submitted experiments:
 
@@ -254,6 +268,20 @@ Base model:
 ```text
 nvidia/Cosmos-Reason2-8B
 ```
+
+Hugging Face access is required to load the base model. Before running evaluation or training, log in with an account that can access `nvidia/Cosmos-Reason2-8B`:
+
+```bash
+huggingface-cli login
+```
+
+Alternatively, set a token in the shell before running the scripts:
+
+```bash
+export HF_TOKEN=your_huggingface_token
+```
+
+If the model is gated for the account, accept/request access on the Hugging Face model page first. The submitted LoRA adapter is included locally, but the base model weights are still loaded from Hugging Face unless already cached.
 
 Final submitted LoRA adapter:
 
