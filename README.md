@@ -112,7 +112,7 @@ Main paths:
 | `results/` | Included Valid/Test result artifacts |
 | `weights/final_likelihood_epoch3/` | Final LoRA adapter |
 
-Internal development notes are not required for reproduction and can be excluded from the final integrated team repository.
+Only `README.md` is required as a markdown document for the final integrated team repository. Auxiliary development notes were moved out of the submission surface and should not be included.
 
 ## 5. Environment
 
@@ -524,7 +524,7 @@ The final project decisions, experiment execution, result interpretation, and pr
 
 ## 13. Final Submission Notes
 
-For integration into a larger team repository, this project component only needs one markdown document: this `README.md`. The following files/directories should be included for reproducibility:
+For integration into a larger team repository, this project component only needs one markdown document: this `README.md`. Do not include auxiliary markdown notes. The following files/directories are the reproducibility package for this component:
 
 ```text
 README.md
